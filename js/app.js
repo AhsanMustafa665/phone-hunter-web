@@ -28,3 +28,10 @@ const ShowSearchResult = (data) => {
         searchResult.appendChild(div)
     })
 }
+const loadPhoneDetail = (phoneSlug) => {
+    // console.log(phoneSlug);
+    const url = `https://openapi.programming-hero.com/api/phone/oppo_find_x5_pro-11236`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => console.log(data))
+}
