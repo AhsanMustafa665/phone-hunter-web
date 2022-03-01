@@ -25,20 +25,32 @@
 </head>
 
 <body>
-  <h2 class="text-center my-3">📲 The <span class="text-warning">Phone</span> Inquiry 🔎</h2>
-  <div class="d-flex container mx-auto">
+  <h2 class="text-center my-3 ">📲 The <span class="text-warning">Phone</span> Inquiry 🔎</h2>
+  <div class="d-flex container  w-50 mx-auto">
 
     <!-- phone search area -->
-    <input id="search-feild" class="form-control me-2 " type="search" placeholder="Search your phone"
+    <input id="search-feild" class="form-control me-2  " type="search" placeholder="Search your phone"
       aria-label="Search">
     <button onclick="searchButton()" class="btn btn-outline-success" type="submit">Search</button>
   </div>
+  <div>
+    <h4 id="error-message" class="text-danger">Something went to wrong,please try later!</h4>
+  </div>
 
+
+
+
+
+  <!-- single phone detail -->
+  <div id="phone-details" class="w-25 my-5 mx-auto">
+
+  </div>
   <!-- phone search result -->
 
   <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 container mx-auto mt-4">
 
   </div>
+  <div id="realase"></div>
   <!----------------
       Script's link
     ----------------->
