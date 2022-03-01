@@ -32,6 +32,10 @@ const displayError = error => {
 const ShowSearchResult = (data) => {
     // console.log(data);
     const searchResult = document.getElementById('search-result')
+    const errorMessage2 = document.getElementById('error-message2')
+    if (data.length == 0) {
+        errorMessage2.innerText = "Something went to wrong,please try later!"
+    }
     const first20data = data.slice(0, 20);
     // clear info(image and others)
     searchResult.textContent = ''
