@@ -9,8 +9,9 @@ const searchButton = () => {
     // clear data
     searchFeild.value = ""
     document.getElementById('error-message').style.display = 'none';
+    const errorMessage2 = document.getElementById('error-message2')
     if (searchText == '') {
-        // alert('asdf')
+        errorMessage2.innerText = "Something went to wrong,please try later!"
 
     }
 
@@ -22,6 +23,7 @@ const searchButton = () => {
             .then(res => res.json())
             .then(data => ShowSearchResult(data.data))
             .catch(error => displayError(error))
+        errorMessage2.innerText = ''
     }
 }
 const displayError = error => {
