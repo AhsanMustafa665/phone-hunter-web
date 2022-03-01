@@ -1,0 +1,19 @@
+body{
+    background-color: black;
+}
+
+h2{
+    font-family: fantasy;
+    font-weight: 900;
+    font-size: 50px;
+    color: cornsilk;
+}
+span{
+    color:black;
+}
+.round{
+    border-radius: 20px;
+}
+.round2{
+    border-radius: 20px;
+}
