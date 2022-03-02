@@ -10,8 +10,10 @@ const searchButton = () => {
     searchFeild.value = ""
     document.getElementById('error-message').style.display = 'none';
     const errorMessage2 = document.getElementById('error-message2')
+
+    //  the error message show,when you search feild no writting
     if (searchText == '') {
-        errorMessage2.innerText = "Something went to wrong,please try later!"
+        errorMessage2.innerText = "Please write something!"
 
     }
 
@@ -33,14 +35,17 @@ const ShowSearchResult = (data) => {
     // console.log(data);
     const searchResult = document.getElementById('search-result')
     const errorMessage2 = document.getElementById('error-message2')
+
+    // the error message show,when you written phone is not available here
     if (data.length == 0) {
-        errorMessage2.innerText = "Something went to wrong,please try later!"
+        errorMessage2.innerText = "Sorry, the phone you searcher for watch not found!"
     }
     const first20data = data.slice(0, 20);
+
     // clear info(image and others)
     searchResult.textContent = ''
     first20data.forEach(byte => {
-        console.log(byte);
+        // console.log(byte);
         const div = document.createElement('div')
         div.classList.add('col');
         div.innerHTML = `
@@ -59,6 +64,7 @@ const ShowSearchResult = (data) => {
 const loadPhoneDetail = (phoneSlug) => {
     // console.log(phoneSlug);
     const url = `https://openapi.programming-hero.com/api/phone/${phoneSlug}`
+    // console.log(url);
     fetch(url)
         .then(res => res.json())
         .then(data => showPhoneDetail(data.data))
@@ -70,8 +76,11 @@ const showPhoneDetail = (info) => {
     phoneDetails.textContent = '';
     const div = document.createElement('div')
     div.classList.add('card');
+    if (info.releaseDate == 0) {
+        alert("This phone will be released soon.")
+    }
     div.innerHTML = `
-    <div class="card w-100 bg-warning round ">
+    <div class="card w-100  round ">
     <img src="${info.image}" class="card-img-top" alt="...">
         <div class="card-body details-bg my-3 ">
           <h4 class="card-title mb-4 text-primary">Release Date : ${info.releaseDate}</h4>
@@ -79,6 +88,13 @@ const showPhoneDetail = (info) => {
           <p><span class="fw-bold fst-italic">Display-size :</span> ${info.mainFeatures.displaySize}</p>
           <p><span class="fw-bold fst-italic">Chipset :</span> ${info.mainFeatures.chipSet}</p>
           <p><span class="fw-bold fst-italic">Memory :</span> ${info.mainFeatures.memory}</p>
+          <p><span class="fw-bold fst-italic">Sensors :</span> ${info.mainFeatures.sensors[0]}</p>
+          <p><span class="fw-bold fst-italic">WLAN :</span> ${info.others.WLAN}</p>
+          <p><span class="fw-bold fst-italic">Bluetooth :</span> ${info.others.Bluetooth}</p>
+          <p><span class="fw-bold fst-italic">GPS :</span> ${info.others.GPS}</p>
+          <p><span class="fw-bold fst-italic">NFC :</span> ${info.others.NFC}</p>
+          <p><span class="fw-bold fst-italic">Radio :</span> ${info.others.Radio}</p>
+          <p><span class="fw-bold fst-italic">USB :</span> ${info.others.USB}</p>
           
         </div>
         </div>
